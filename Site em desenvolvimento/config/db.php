@@ -1,7 +1,7 @@
 <?php
 // Arquivo de Conexão com o Banco de Dados (usando PDO)
 
-// --- CONFIGURE SEUS DADOS AQUI ---
+
 $host = '127.0.0.1';
 $port = '3307';
 $db_name = 'BancoPub'; // Verifique se 'teste_login' é o nome correto do seu banco de dados

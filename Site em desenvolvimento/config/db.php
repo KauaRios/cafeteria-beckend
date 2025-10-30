@@ -13,7 +13,7 @@ $charset = 'utf8mb4';
 // DSN (Data Source Name) - A string de conexão do PDO
 $dsn = "mysql:host=$host;port=$port;dbname=$db_name;charset=$charset";
 
-// Opções do PDO para um melhor tratamento de erros e resultados
+// Opções do PDO para melhor tratamento de erros e segurança
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -22,9 +22,9 @@ $options = [
 ];
 
 try {
-    // AQUI ESTÁ A MÁGICA:
-    // Nós criamos a variável $pdo diretamente.
-    // Quando outro arquivo incluir o db.php, esta variável estará disponível.
+   
+    
+    // Cria a instância do PDO para conexão com o banco de dados
     $pdo = new PDO($dsn, $user, $pass, $options);
 
 } // Dentro de config/db.php
@@ -34,6 +34,7 @@ catch (\PDOException $e) {
     $log_path = __DIR__ . '/../logs'; 
     $log_file = $log_path . '/app.log';
 
+    // 2. Cria a pasta de logs se ela não existir.
     if (!is_dir($log_path)) {
         mkdir($log_path, 0755, true);
     }
@@ -41,7 +42,7 @@ catch (\PDOException $e) {
     $error_message = "[" . date('Y-m-d H:i:s') . "] Erro de conexão com o banco de dados: " . $e->getMessage() . PHP_EOL;
     file_put_contents($log_file, $error_message, FILE_APPEND | LOCK_EX);
 
-    // --- MUDANÇA PRINCIPAL AQUI ---
+   
     // Em vez de chamar die(), nós relançamos a exceção.
     // Isso permite que qualquer script que inclua este arquivo possa capturar o erro.
     throw new \PDOException("Erro fatal: Não foi possível conectar ao banco de dados.", (int)$e->getCode(), $e);
@@ -65,8 +66,7 @@ catch (\PDOException $e) {
     file_put_contents($log_file, $error_message, FILE_APPEND | LOCK_EX);
 
   
-    // Em vez de chamar die(), nós relançamos a exceção.
-    // Isso permite que qualquer script que inclua este arquivo possa capturar o erro.
+   // erro fatal: Não foi possível conectar ao banco de dados.
     throw new \PDOException("Erro fatal: Não foi possível conectar ao banco de dados.", (int)$e->getCode(), $e);
 }
 ?>

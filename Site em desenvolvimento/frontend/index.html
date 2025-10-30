@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In The Pub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="image-section" id="image-section"></div>
+    
+        <div class="login-section">
+            <h1 class="welcome-title" id="welcome-title">Bem-vindo(a)!</h1>
+            <p class="welcome-subtitle" id="welcome-subtitle">É bom ter você de volta!</p>
+        
+         
+                <div class="form-group">
+                    <label class="form-label" for="email">Email ou Telefone:</label>
+                    <input 
+                        type="text" 
+                        id="email" 
+                        class="form-input"
+                        placeholder=""
+                        name="email" required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Senha:</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input"
+                        placeholder=""
+                        name="password" required
+                    >
+                </div>
+                
+                <div class="form-footer">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="remember">
+                        <label class="checkbox-label" for="remember">Manter conectado</label>
+                    </div>
+                    <a href="#" class="forgot-link">Esqueceu sua senha?</a>
+                </div>
+                
+                <button type="button" class="login-button" onclick="logar()">Entrar</button>
+                
+                <p class="signup-text">
+                    Não tem uma conta? <a href="#" class="signup-link">Cadastre-se</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="validar.js"></script>
+
+</body>
+</html>

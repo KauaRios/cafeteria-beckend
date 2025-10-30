@@ -43,8 +43,7 @@ catch (\PDOException $e) {
     file_put_contents($log_file, $error_message, FILE_APPEND | LOCK_EX);
 
    
-    // Em vez de chamar die(), nós relançamos a exceção.
-    // Isso permite que qualquer script que inclua este arquivo possa capturar o erro.
+  
     throw new \PDOException("Erro fatal: Não foi possível conectar ao banco de dados.", (int)$e->getCode(), $e);
 }// Dentro de config/db.php
 
